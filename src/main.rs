@@ -14,17 +14,17 @@ async fn main() -> shuttle_axum::ShuttleAxum {
     let mut env = Environment::new();
     env.set_loader(path_loader("templates"));
 
-    let state = Arc::new(State { env: Arc::new(env) });
+    let extension = Extension(Arc::new(State { env: Arc::new(env) }));
 
     let router = Router::new()
-        // `GET /` goes to `root`
-        .route("/", get(root))
-        // `POST /users` goes to `create_user`
-        .layer(Extension(state));
+        // Routes
+        .route("/", get(index))
+        // State
+        .layer(extension);
     Ok(router.into())
 }
 
-async fn root(Extension(state): Extension<Arc<State>>) -> Html<String> {
+async fn index(Extension(state): Extension<Arc<State>>) -> Html<String> {
     let context = context!(name => "Axum");
     render_template(state, "index.html", context).await
 }
