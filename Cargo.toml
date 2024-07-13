@@ -11,3 +11,5 @@ serde_json = "1.0.120"
 tracing-subscriber = "0.3.18"
 minijinja = {version = "2", features = ["loader"]}
 shuttle = "0.7.1"
+shuttle-runtime = "0.46.0"
+shuttle-axum = "0.46.0"
