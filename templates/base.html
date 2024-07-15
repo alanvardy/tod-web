@@ -3,10 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %} DEFAULT TITLE {% endblock %}</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
-  </head>
+      <title>{{ title }} | Tod</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css">
+      <style>
+      @media (min-width: 768px) {
+        .is-half {
+          width: 50%;
+        }
+        .is-centered {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .svg {
+        fill: white;
+      }
+      </style>
+    </head>
   <body>
+    {% include 'nav.html' %}
+    <section class="section">
+      <div class="container">
+        <h1 class="title">{{ title }}</h1>
+        <div class="content">
         {% block content %} DEFAULT CONTENT {% endblock %}
+        </div>
+      </div>
+    </section>
   </body>
 </html>
