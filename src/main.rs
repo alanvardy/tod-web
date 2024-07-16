@@ -24,21 +24,23 @@ struct Config {
 
 pub const BOOLEAN: &str = "boolean";
 
-#[shuttle_runtime::main]
-async fn main() -> shuttle_axum::ShuttleAxum {
+fn router() -> Router {
     let mut env = Environment::new();
     env.set_loader(path_loader("templates"));
 
     let state = AppState { env: Arc::new(env) };
 
-    let router = Router::new()
+    Router::new()
         // Routes
         .route("/", get(index))
         .route("/configuration", get(configuration))
         // State
-        .with_state(state);
+        .with_state(state)
+}
 
-    Ok(router.into())
+#[shuttle_runtime::main]
+async fn main() -> shuttle_axum::ShuttleAxum {
+    Ok(router().into())
 }
 
 async fn index(State(app_state): State<AppState>) -> Html<String> {
@@ -235,4 +237,36 @@ fn get_nav() -> Vec<Link> {
             name: "Configuration".into(),
         },
     ]
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use axum_test::TestServer;
+
+    #[tokio::test]
+    async fn test_index() {
+        // you can replace this Router with your own app
+
+        let server = TestServer::new(router()).unwrap();
+        // Get the request.
+        let response = server.get("/").await;
+
+        assert!(response
+            .text()
+            .contains("An unofficial Todoist CLI program. "))
+    }
+
+    #[tokio::test]
+    async fn test_configuration() {
+        // you can replace this Router with your own app
+
+        let server = TestServer::new(router()).unwrap();
+        // Get the request.
+        let response = server.get("/configuration").await;
+
+        assert!(response
+            .text()
+            .contains("Data is stored at $XDG_CONFIG_HOME/tod.cfg. This defaults to:"))
+    }
 }
