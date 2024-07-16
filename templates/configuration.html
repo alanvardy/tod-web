@@ -31,23 +31,18 @@
         <p>
           Configuration is stored in JSON format
         </p>
-        <div class="is-centered">
-          <div class="is-half">
-            <article class="message">
-              <div class="message-body">
-                {<br>
-                  &nbsp&nbsp"bell_on_failure": true,<br>
-                  &nbsp&nbsp"bell_on_success": false,<br>
-                  &nbsp&nbsp"disable_links": false,<br>
-                  &nbsp&nbsp"last_version_check": "2024-06-19",<br>
-                  &nbsp&nbsp"timezone": "Canada/Pacific",<br>
-                  &nbsp&nbsp"verbose": false<br>
-                  &nbsp&nbsp ...and many more<br>
-                }<br>
-              </div>
-            </article>
-          </div>
-        </div>
+
+        {% include "code-block-start.html" %}
+          {<br>
+            &nbsp&nbsp"bell_on_failure": true,<br>
+            &nbsp&nbsp"bell_on_success": false,<br>
+            &nbsp&nbsp"disable_links": false,<br>
+            &nbsp&nbsp"last_version_check": "2024-06-19",<br>
+            &nbsp&nbsp"timezone": "Canada/Pacific",<br>
+            &nbsp&nbsp"verbose": false<br>
+            &nbsp&nbsp ...and many more<br>
+          }<br>
+        {% include "code-block-stop.html" %}
 
         <h3>Values</h3>
         <table class="table is-bordered is-striped is-hoverable mt-2">
