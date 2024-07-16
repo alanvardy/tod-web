@@ -3,6 +3,7 @@ use serde::Serialize;
 
 mod configuration;
 mod index;
+mod usage;
 
 #[derive(Serialize)]
 struct Link {
@@ -14,6 +15,7 @@ fn router() -> Router {
     Router::new()
         // Routes
         .merge(index::routes())
+        .merge(usage::routes())
         .merge(configuration::routes())
 }
 
@@ -27,6 +29,10 @@ fn get_nav() -> Vec<Link> {
         Link {
             href: "/".into(),
             name: "Tod".into(),
+        },
+        Link {
+            href: "/usage".into(),
+            name: "Usage".into(),
         },
         Link {
             href: "/configuration".into(),
@@ -64,5 +70,17 @@ mod tests {
         assert!(response
             .text()
             .contains("Data is stored at $XDG_CONFIG_HOME/tod.cfg. This defaults to:"))
+    }
+    #[tokio::test]
+    async fn test_usage() {
+        // you can replace this Router with your own app
+
+        let server = TestServer::new(router()).unwrap();
+        // Get the request.
+        let response = server.get("/usage").await;
+
+        assert!(response
+            .text()
+            .contains("You can access help using the help flag"))
     }
 }
