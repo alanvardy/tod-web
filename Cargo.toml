@@ -13,6 +13,8 @@ minijinja = {version = "2", features = ["loader"]}
 shuttle = "0.7.1"
 shuttle-runtime = "0.46.0"
 shuttle-axum = "0.46.0"
+askama_axum = "0.4.0"
+askama = "0.12.1"
 
 [dev-dependencies]
 cargo-watch = "8.5.2"
