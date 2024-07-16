@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
         <h3>Location</h3>
         <p>
@@ -56,6 +56,7 @@
               <th>Name</th>
               <th>Type</th>
               <th>Default Value</th>
+              <th>Possible Values</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -65,6 +66,7 @@
                   <td> {{ item.name }} </td>
                   <td> {{ item.data_type }} </td>
                   <td> {{ item.default_value}} </td>
+                  <td> {{ item.possible_values}} </td>
                   <td> {{ item.description }} </td>
                 </tr>
             {% endfor %}
