@@ -1,5 +1,7 @@
 use axum::Router;
 use serde::Serialize;
+use tower_http::trace::{DefaultMakeSpan, DefaultOnResponse, TraceLayer};
+use tracing::Level;
 
 mod configuration;
 mod index;
@@ -11,7 +13,7 @@ struct Link {
     href: String,
 }
 
-fn router() -> Router {
+fn routes() -> Router {
     Router::new()
         // Routes
         .merge(index::routes())
@@ -21,7 +23,12 @@ fn router() -> Router {
 
 #[shuttle_runtime::main]
 async fn main() -> shuttle_axum::ShuttleAxum {
-    Ok(router().into())
+    let router = routes().layer(
+        TraceLayer::new_for_http()
+            .make_span_with(DefaultMakeSpan::new().level(Level::INFO))
+            .on_response(DefaultOnResponse::new().level(Level::INFO)),
+    );
+    Ok(router.into())
 }
 
 fn get_nav() -> Vec<Link> {
@@ -50,7 +57,7 @@ mod tests {
     async fn test_index() {
         // you can replace this Router with your own app
 
-        let server = TestServer::new(router()).unwrap();
+        let server = TestServer::new(routes()).unwrap();
         // Get the request.
         let response = server.get("/").await;
 
@@ -63,7 +70,7 @@ mod tests {
     async fn test_configuration() {
         // you can replace this Router with your own app
 
-        let server = TestServer::new(router()).unwrap();
+        let server = TestServer::new(routes()).unwrap();
         // Get the request.
         let response = server.get("/configuration").await;
 
@@ -75,7 +82,7 @@ mod tests {
     async fn test_usage() {
         // you can replace this Router with your own app
 
-        let server = TestServer::new(router()).unwrap();
+        let server = TestServer::new(routes()).unwrap();
         // Get the request.
         let response = server.get("/usage").await;
 
