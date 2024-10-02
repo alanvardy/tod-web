@@ -18,5 +18,5 @@ tracing-subscriber = { version = "0.3.18", features = ["env-filter"]}
 tower-http = { version = "0.6.1", features = ["trace"] }
 
 [dev-dependencies]
-cargo-watch = "8.5.2"
+cargo-watch = "8.5.3"
 axum-test = "15.3.1"
