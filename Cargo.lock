@@ -2606,12 +2606,13 @@ checksum = "45bb67a18fa91266cc7807181f62f9178a6873bfad7dc788c42e6430db40184f"
 
 [[package]]
 name = "shuttle"
-version = "0.7.1"
+version = "0.8.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2d9a8db61a44e2b663f169a08206a789bcbd22ba32011e14951562848e7b9c98"
+checksum = "e72e65e5ac3437476a310bd73ec924dc75e3055ffa61f376266f80576f3869ff"
 dependencies = [
  "assoc",
  "bitvec",
+ "cfg-if 1.0.0",
  "generator",
  "hex",
  "owo-colors",
