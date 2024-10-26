@@ -75,27 +75,27 @@
 <p>Sort, schedule, prioritize, and process tasks</p>
 
 {% include "code-block-start.html" %}
-  echo "" && \
-  echo "=== EMPTYING INBOX ===" && \
-  tod project empty --project inbox && \
-  echo "" && \
-  echo "=== SCHEDULING DIGITAL ===" && \
-  tod list schedule --project digital && \
-  echo "" && \
-  echo "=== SCHEDULING PHYSICAL ===" && \
-  tod list schedule --project physical && \
-  echo "" && \
-  echo "=== PRIORITIZING DIGITAL ===" && \
-  tod list prioritize --project digital && \
-  echo "" && \
-  echo "=== PRIORITIZING PHYSICAL ===" && \
-  tod list prioritize --project physical
-  echo "" && \
-  echo "=== PROCESSING DIGITAL ===" && \
-  tod list process --project digital && \
-  echo "" && \
-  echo "=== PROCESSING PHYSICAL ===" && \
-  tod list process --project physical;
+  echo "" && \<br>
+  echo "=== EMPTYING INBOX ===" && \<br>
+  tod project empty --project inbox && \<br>
+  echo "" && \<br>
+  echo "=== SCHEDULING DIGITAL ===" && \<br>
+  tod list schedule --project digital && \<br>
+  echo "" && \<br>
+  echo "=== SCHEDULING PHYSICAL ===" && \<br>
+  tod list schedule --project physical && \<br>
+  echo "" && \<br>
+  echo "=== PRIORITIZING DIGITAL ===" && \<br>
+  tod list prioritize --project digital && \<br>
+  echo "" && \<br>
+  echo "=== PRIORITIZING PHYSICAL ===" && \<br>
+  tod list prioritize --project physical<br>
+  echo "" && \<br>
+  echo "=== PROCESSING DIGITAL ===" && \<br>
+  tod list process --project digital && \<br>
+  echo "" && \<br>
+  echo "=== PROCESSING PHYSICAL ===" && \<br>
+  tod list process --project physical;<br>
 {% include "code-block-stop.html" %}
 
 <p>Update Tod only if it is out of date</p> 
