@@ -350,9 +350,9 @@ dependencies = [
 
 [[package]]
 name = "axum"
-version = "0.7.7"
+version = "0.7.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "504e3947307ac8326a5437504c517c4b56716c9d98fac0028c2acc7ca47d70ae"
+checksum = "edca88bc138befd0323b20752846e6587272d3b03b0343c8ea28a6f819e6e71f"
 dependencies = [
  "async-trait",
  "axum-core 0.4.5",
@@ -428,7 +428,7 @@ checksum = "ac63648e380fd001402a02ec804e7686f9c4751f8cad85b7de0b53dae483a128"
 dependencies = [
  "anyhow",
  "auto-future",
- "axum 0.7.7",
+ "axum 0.7.9",
  "bytes",
  "cookie",
  "http 1.1.0",
@@ -2851,7 +2851,7 @@ version = "0.48.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "88ce5d2dadb85e16552a7dfafb16bdb270a2e1e32daa71ff31e286b842aa5763"
 dependencies = [
- "axum 0.7.7",
+ "axum 0.7.9",
  "shuttle-runtime",
 ]
 
@@ -3302,7 +3302,7 @@ version = "0.1.0"
 dependencies = [
  "askama",
  "askama_axum",
- "axum 0.7.7",
+ "axum 0.7.9",
  "axum-test",
  "cargo-watch",
  "serde",
