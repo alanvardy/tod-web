@@ -1,4 +1,4 @@
-use askama_axum::Template;
+use askama::Template;
 use axum::{response::Html, routing::get, Router};
 use serde::Serialize;
 
